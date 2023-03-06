@@ -2,6 +2,7 @@ package net.punjarrr.morebricks.core;
 
 import net.fabricmc.api.ModInitializer;
 
+import net.punjarrr.morebricks.block.Blocks;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -13,6 +14,6 @@ public class MoreBricks implements ModInitializer
 	@Override
 	public void onInitialize()
 	{
-
+		Blocks.registerModBlocks();
 	}
 }
