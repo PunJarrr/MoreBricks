@@ -1,2 +1,2 @@
-# MoreBricks-1.19.3
+# MoreBricks
 The source code of MoreBricks mod!
