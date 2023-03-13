@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "values":
+  [
+    "morebricks:granite_bricks",
+    "morebricks:diorite_bricks",
+    "morebricks:andesite_bricks",
+    "morebricks:granite_brick_stairs",
+    "morebricks:diorite_brick_stairs",
+    "morebricks:andesite_brick_stairs",
+    "morebricks:granite_brick_slab",
+    "morebricks:diorite_brick_slab",
+    "morebricks:andesite_brick_slab"
+  ]
+}
