@@ -1,0 +1,41 @@
+{
+	"schemaVersion": 1,
+	"id": "morebricks",
+	"version": "${version}",
+	"name": "MoreBricks",
+	"description": "Adds Andesite, Diorite, Granite bricks to Minecraft!",
+	"authors": [
+		"PunJarrr"
+	],
+	"contact": {
+		"homepage": "https://modrinth.com/mod/morebricks",
+		"issues": "https://github.com/PunJarrr/MoreBricks/issues",
+		"sources": "https://github.com/PunJarrr/MoreBricks"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/morebricks/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"net.punjarrr.morebricks.MoreBricks"
+		],
+		"client": [
+			"net.punjarrr.morebricks.MoreBricksClient"
+		],
+		"fabric-datagen": [
+			"net.punjarrr.morebricks.MoreBricksDataGenerator"
+		]
+	},
+	"mixins": [
+		"morebricks.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.14.22",
+		"minecraft": "~1.20.1",
+		"java": ">=17",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
