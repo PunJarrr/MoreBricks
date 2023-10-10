@@ -1,10 +1,14 @@
 package net.punjarrr.morebricks.block;
 
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
+import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
+import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.block.*;
 import net.minecraft.block.enums.Instrument;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroups;
+import net.minecraft.item.Items;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
@@ -54,7 +58,26 @@ public class ModBlocks {
                 new BlockItem(block, new FabricItemSettings()));
     }
 
+    private static void addBlockItemsToBuildingBlocksItemGroup(FabricItemGroupEntries entries) {
+        // Granite Bricks
+        entries.addAfter(Items.POLISHED_GRANITE_SLAB, ModBlocks.GRANITE_BRICKS);
+        entries.addAfter(ModBlocks.GRANITE_BRICKS, ModBlocks.GRANITE_BRICK_STAIRS);
+        entries.addAfter(ModBlocks.GRANITE_BRICK_STAIRS, ModBlocks.GRANITE_BRICK_SLAB);
+
+        // Diorite Bricks
+        entries.addAfter(Items.POLISHED_DIORITE_SLAB, ModBlocks.DIORITE_BRICKS);
+        entries.addAfter(ModBlocks.DIORITE_BRICKS, ModBlocks.DIORITE_BRICK_STAIRS);
+        entries.addAfter(ModBlocks.DIORITE_BRICK_STAIRS, ModBlocks.DIORITE_BRICK_SLAB);
+
+        // Andesite Bricks
+        entries.addAfter(Items.POLISHED_ANDESITE_SLAB, ModBlocks.ANDESITE_BRICKS);
+        entries.addAfter(ModBlocks.ANDESITE_BRICKS, ModBlocks.ANDESITE_BRICK_STAIRS);
+        entries.addAfter(ModBlocks.ANDESITE_BRICK_STAIRS, ModBlocks.ANDESITE_BRICK_SLAB);
+    }
+
     public static void registerModBlocks() {
         MoreBricks.LOGGER.info("Registering ModBlocks for " + MoreBricks.MOD_ID);
+
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS).register(ModBlocks::addBlockItemsToBuildingBlocksItemGroup);
     }
 }
