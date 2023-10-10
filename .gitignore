@@ -1,5 +1,5 @@
 # folder
-.gradle
-.idea
-build
-run
+/.gradle/
+/.idea/
+/build/
+/run/
