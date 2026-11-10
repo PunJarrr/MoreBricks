@@ -12,7 +12,10 @@ import java.util.concurrent.CompletableFuture;
 
 final class ModBlockLootProvider extends FabricBlockLootSubProvider {
     ModBlockLootProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
+        //? if >=1.20.5 {
         super(output, registries);
+        //?} else
+        /*super(output);*/
     }
 
     @Override

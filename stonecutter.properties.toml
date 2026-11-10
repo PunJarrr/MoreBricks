@@ -10,6 +10,10 @@ mod.name = "MoreBricks"
 mod.group = "net.punjarrr.morebricks"
 mod.version = "2.0.0"
 
+# Release pages. Uploads need MODRINTH_TOKEN / CURSEFORGE_TOKEN (GitHub Actions secrets).
+publish.modrinth = "28Z4jb8Q"
+publish.curseforge = "922038"
+
 deps.fabric_loader = "0.20.1"
 loomx.loom_version = "1.19-SNAPSHOT"
 

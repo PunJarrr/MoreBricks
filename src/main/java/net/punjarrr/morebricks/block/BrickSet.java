@@ -43,7 +43,7 @@ public final class BrickSet {
     }
 
     private BlockBehaviour.Properties properties() {
-        //? if >=1.20.5 {
+        //? if >=1.20.4 {
         return BlockBehaviour.Properties.ofFullCopy(stone);
         //?} else
         /*return BlockBehaviour.Properties.copy(stone);*/

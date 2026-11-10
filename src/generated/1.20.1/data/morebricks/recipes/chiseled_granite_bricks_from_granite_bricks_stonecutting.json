@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 1,
+  "ingredient": {
+    "item": "morebricks:granite_bricks"
+  },
+  "result": "morebricks:chiseled_granite_bricks"
+}

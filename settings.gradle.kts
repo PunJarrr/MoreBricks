@@ -24,6 +24,18 @@ stonecutter {
             for (loader in loaders) version("$version-$loader", version).buildscript("build.$loader.gradle.kts")
         }
 
+        // Each target covers the Minecraft releases listed under `mod.mc_releases` in stonecutter.properties.toml
+        target("1.20.1", "fabric") // NeoForge has no stable 1.20.1 release (1.20.1 modpacks use Forge)
+        target("1.20.4", "fabric", "neoforge")
+        target("1.20.6", "fabric", "neoforge")
+        target("1.21.1", "fabric", "neoforge")
+        target("1.21.4", "fabric", "neoforge")
+        target("1.21.5", "fabric", "neoforge")
+        target("1.21.8", "fabric", "neoforge")
+        target("1.21.10", "fabric", "neoforge")
+        target("1.21.11", "fabric", "neoforge")
+        target("26.1.2", "fabric", "neoforge")
+        target("26.2", "fabric", "neoforge")
         target("26.3", "fabric", "neoforge")
 
         vcsVersion = "26.3-fabric"

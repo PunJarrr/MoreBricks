@@ -1,0 +1,36 @@
+name: Build
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: |
+            17
+            21
+            25
+
+      - uses: gradle/actions/setup-gradle@v4
+
+      - name: Check generated resources are up to date
+        run: |
+          ./gradlew runDatagen
+          git diff --exit-code -- src/generated
+
+      - name: Build all versions
+        run: ./gradlew buildAndCollect
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: morebricks
+          path: build/libs/

@@ -1,0 +1,22 @@
+{
+  "values": [
+    "morebricks:granite_bricks",
+    "morebricks:cracked_granite_bricks",
+    "morebricks:granite_brick_stairs",
+    "morebricks:granite_brick_slab",
+    "morebricks:granite_brick_wall",
+    "morebricks:chiseled_granite_bricks",
+    "morebricks:diorite_bricks",
+    "morebricks:cracked_diorite_bricks",
+    "morebricks:diorite_brick_stairs",
+    "morebricks:diorite_brick_slab",
+    "morebricks:diorite_brick_wall",
+    "morebricks:chiseled_diorite_bricks",
+    "morebricks:andesite_bricks",
+    "morebricks:cracked_andesite_bricks",
+    "morebricks:andesite_brick_stairs",
+    "morebricks:andesite_brick_slab",
+    "morebricks:andesite_brick_wall",
+    "morebricks:chiseled_andesite_bricks"
+  ]
+}

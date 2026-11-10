@@ -1,6 +1,8 @@
 plugins {
     // Applies the right Loom variant for the Minecraft version
     id("dev.kikugie.loom-back-compat")
+    // Uploads to Modrinth and CurseForge (https://modmuss50.github.io/mod-publish-plugin/)
+    id("me.modmuss50.mod-publish-plugin") version "2.2.1"
 }
 
 val modId = sc.properties["mod.id"]
@@ -77,8 +79,9 @@ tasks {
     }
 
     withType<Jar> {
-        inputs.property("mod_id", modId)
-        from(rootProject.file("LICENSE")) { rename { "${it}_$modId" } }
+        val id = modId
+        inputs.property("mod_id", id)
+        from(rootProject.file("LICENSE")) { rename { "${it}_$id" } }
     }
 
     register<Copy>("buildAndCollect") {
@@ -88,5 +91,36 @@ tasks {
         inputs.property("version", modVersion)
         from(loomx.modJar.flatMap { it.archiveFile })
         into(rootProject.layout.buildDirectory.dir("libs/$modVersion"))
+    }
+}
+
+publishMods {
+    val releases = sc.properties.rawOrNull("mod", "mc_releases")?.asList().orEmpty().map { it.toString() }
+    val modrinthToken = providers.environmentVariable("MODRINTH_TOKEN")
+    val curseforgeToken = providers.environmentVariable("CURSEFORGE_TOKEN")
+
+    file = loomx.modJar.flatMap { it.archiveFile }
+    displayName = "${sc.properties["mod.name"]} $modVersion (Fabric ${sc.current.version})"
+    version = "$modVersion+${sc.current.version}-fabric"
+    changelog = providers.environmentVariable("CHANGELOG").orElse("See https://github.com/PunJarrr/MoreBricks/releases")
+    type = STABLE
+    modLoaders.add("fabric")
+    // Without tokens, `publishMods` only checks the configuration
+    dryRun = modrinthToken.map { false }.orElse(true)
+
+    modrinth {
+        projectId = sc.properties["publish.modrinth"]
+        accessToken = modrinthToken
+        minecraftVersions.addAll(releases)
+        requires("fabric-api")
+    }
+    curseforge {
+        projectId = sc.properties["publish.curseforge"]
+        accessToken = curseforgeToken
+        minecraftVersions.addAll(releases)
+        javaVersions.add(requiredJava)
+        clientRequired = true
+        serverRequired = true
+        requires("fabric-api")
     }
 }

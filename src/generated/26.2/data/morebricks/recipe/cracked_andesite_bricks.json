@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "category": "blocks",
+  "experience": 0.1,
+  "ingredient": "morebricks:andesite_bricks",
+  "result": {
+    "id": "morebricks:cracked_andesite_bricks"
+  }
+}

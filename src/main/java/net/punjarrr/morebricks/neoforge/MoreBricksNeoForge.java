@@ -56,7 +56,10 @@ public final class MoreBricksNeoForge {
             ItemStack previous = new ItemStack(set.insertAfter);
             for (Block block : set.blocks()) {
                 ItemStack stack = new ItemStack(block);
+                //? if >=1.21 {
                 event.insertAfter(previous, stack, CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+                //?} else
+                /^event.getEntries().putAfter(previous, stack, CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);^/
                 previous = stack;
             }
         }

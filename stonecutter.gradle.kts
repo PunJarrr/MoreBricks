@@ -19,5 +19,20 @@ stonecutter parameters {
         string(current.parsed >= "1.21.11") {
             replace("ResourceLocation", "Identifier")
         }
+
+        // Fabric API renamed its data generation classes to match Mojang's names in 26.1
+        string(current.parsed >= "26.1") {
+            replace("FabricDataOutput", "FabricPackOutput")
+            replace("FabricBlockLootTableProvider", "FabricBlockLootSubProvider")
+            replace("FabricTagProvider", "FabricTagsProvider")
+            replace("BlockTagProvider", "BlockTagsProvider")
+            replace("ItemTagProvider", "ItemTagsProvider")
+        }
+
+        // Model generation moved to Minecraft's client code in 1.21.4
+        string(current.parsed >= "1.21.4") {
+            replace("net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider", "net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider")
+            replace("net.minecraft.data.models.", "net.minecraft.client.data.models.")
+        }
     }
 }
