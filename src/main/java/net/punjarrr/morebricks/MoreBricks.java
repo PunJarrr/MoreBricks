@@ -1,18 +1,20 @@
 package net.punjarrr.morebricks;
 
-import net.fabricmc.api.ModInitializer;
-import net.punjarrr.morebricks.block.ModBlocks;
-import net.punjarrr.morebricks.itemgroup.ModItemGroups;
+import net.minecraft.resources.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class MoreBricks implements ModInitializer {
+/** Loader-independent constants and helpers. */
+public final class MoreBricks {
     public static final String MOD_ID = "morebricks";
-    public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
+    public static final Logger LOGGER = LoggerFactory.getLogger("MoreBricks");
 
-    @Override
-    public void onInitialize() {
-        ModBlocks.initialize();
-        ModItemGroups.initialize();
+    private MoreBricks() {}
+
+    public static Identifier id(String path) {
+        //? if <1.21 {
+        /*return new Identifier(MOD_ID, path);
+        *///?} else
+        return Identifier.fromNamespaceAndPath(MOD_ID, path);
     }
 }

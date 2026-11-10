@@ -1,12 +1,22 @@
 {
-  "itemGroup.morebricks.morebricks": "MoreBricks",
   "block.morebricks.granite_bricks": "Granite Bricks",
-  "block.morebricks.diorite_bricks": "Diorite Bricks",
-  "block.morebricks.andesite_bricks": "Andesite Bricks",
+  "block.morebricks.cracked_granite_bricks": "Cracked Granite Bricks",
   "block.morebricks.granite_brick_stairs": "Granite Brick Stairs",
-  "block.morebricks.diorite_brick_stairs": "Diorite Brick Stairs",
-  "block.morebricks.andesite_brick_stairs": "Andesite Brick Stairs",
   "block.morebricks.granite_brick_slab": "Granite Brick Slab",
+  "block.morebricks.granite_brick_wall": "Granite Brick Wall",
+  "block.morebricks.chiseled_granite_bricks": "Chiseled Granite Bricks",
+
+  "block.morebricks.diorite_bricks": "Diorite Bricks",
+  "block.morebricks.cracked_diorite_bricks": "Cracked Diorite Bricks",
+  "block.morebricks.diorite_brick_stairs": "Diorite Brick Stairs",
   "block.morebricks.diorite_brick_slab": "Diorite Brick Slab",
-  "block.morebricks.andesite_brick_slab": "Andesite Brick Slab"
+  "block.morebricks.diorite_brick_wall": "Diorite Brick Wall",
+  "block.morebricks.chiseled_diorite_bricks": "Chiseled Diorite Bricks",
+
+  "block.morebricks.andesite_bricks": "Andesite Bricks",
+  "block.morebricks.cracked_andesite_bricks": "Cracked Andesite Bricks",
+  "block.morebricks.andesite_brick_stairs": "Andesite Brick Stairs",
+  "block.morebricks.andesite_brick_slab": "Andesite Brick Slab",
+  "block.morebricks.andesite_brick_wall": "Andesite Brick Wall",
+  "block.morebricks.chiseled_andesite_bricks": "Chiseled Andesite Bricks"
 }

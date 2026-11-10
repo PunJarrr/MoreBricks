@@ -1,0 +1,92 @@
+plugins {
+    // Applies the right Loom variant for the Minecraft version
+    id("dev.kikugie.loom-back-compat")
+}
+
+val modId = sc.properties["mod.id"]
+val modVersion = sc.properties["mod.version"]
+
+version = "$modVersion+${sc.current.version}"
+base.archivesName = "$modId-fabric"
+
+val requiredJava: JavaVersion = when {
+    sc.current.parsed >= "26.1" -> JavaVersion.VERSION_25
+    sc.current.parsed >= "1.20.5" -> JavaVersion.VERSION_21
+    else -> JavaVersion.VERSION_17
+}
+
+// Data generation runs on Fabric. Its output is shared with the NeoForge build of the same Minecraft version.
+val generatedResources = rootProject.file("src/generated/${sc.current.version}")
+
+sourceSets.main {
+    resources.srcDir(generatedResources)
+}
+
+dependencies {
+    minecraft("com.mojang:minecraft:${sc.current.version}")
+    // Mojang's official names on obfuscated versions, so code matches 26.1+
+    loomx.applyMojangMappings()
+
+    // `mod*` configurations are converted by loom-back-compat on 26.1+
+    modImplementation("net.fabricmc:fabric-loader:${sc.properties["deps.fabric_loader"]}")
+    modImplementation("net.fabricmc.fabric-api:fabric-api:${sc.properties["deps.fabric_api"]}")
+}
+
+fabricApi {
+    configureDataGeneration {
+        client = true
+        modId = sc.properties["mod.id"]
+        outputDirectory = generatedResources
+    }
+}
+
+loom {
+    fabricModJsonPath = rootProject.file("src/main/resources/fabric.mod.json")
+
+    runConfigs.all {
+        preferGradleTask = true
+        generateRunConfig = true
+        runDirectory = rootProject.file("run/${sc.current.version}")
+    }
+}
+
+java {
+    withSourcesJar()
+    targetCompatibility = requiredJava
+    sourceCompatibility = requiredJava
+
+    toolchain {
+        vendor = JvmVendorSpec.ADOPTIUM
+        languageVersion = JavaLanguageVersion.of(requiredJava.majorVersion)
+    }
+}
+
+tasks {
+    processResources {
+        val props = mapOf(
+            "id" to modId,
+            "name" to sc.properties["mod.name"],
+            "version" to modVersion,
+            "minecraft" to sc.properties["mod.mc_compat"],
+            "loader" to Regex("\\d+\\.\\d+").find(sc.properties["deps.fabric_loader"])!!.value,
+        )
+        inputs.properties(props)
+        filesMatching("fabric.mod.json") { expand(props) }
+
+        exclude("META-INF/neoforge.mods.toml", ".cache")
+    }
+
+    withType<Jar> {
+        inputs.property("mod_id", modId)
+        from(rootProject.file("LICENSE")) { rename { "${it}_$modId" } }
+    }
+
+    register<Copy>("buildAndCollect") {
+        group = "build"
+        description = "Builds the mod jar and copies it to `build/libs/{mod version}/`"
+
+        inputs.property("version", modVersion)
+        from(loomx.modJar.flatMap { it.archiveFile })
+        into(rootProject.layout.buildDirectory.dir("libs/$modVersion"))
+    }
+}

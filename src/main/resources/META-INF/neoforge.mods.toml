@@ -1,0 +1,20 @@
+modLoader = "javafml"
+loaderVersion = "[1,)"
+license = "MIT"
+issueTrackerURL = "https://github.com/PunJarrr/MoreBricks/issues"
+
+[[mods]]
+modId = "${id}"
+displayName = "${name}"
+version = "${version}"
+authors = "PunJarrr"
+description = "Adds granite, diorite and andesite brick sets: bricks, stairs, slabs, walls, cracked and chiseled bricks."
+${icon_key} = "assets/morebricks/icon.png"
+displayURL = "https://modrinth.com/mod/morebricks"
+
+[[dependencies.${id}]]
+modId = "minecraft"
+type = "required"
+versionRange = "${minecraft}"
+ordering = "NONE"
+side = "BOTH"

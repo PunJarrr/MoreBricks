@@ -1,6 +1,0 @@
-{
-	"required": true,
-	"package": "net.punjarrr.morebricks.mixin",
-	"compatibilityLevel": "JAVA_21",
-	"mixins": []
-}
