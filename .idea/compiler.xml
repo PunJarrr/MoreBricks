@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
-    <bytecodeTargetLevel target="17" />
+    <bytecodeTargetLevel target="17">
+      <module name="net.punjarrr.morebricks.MoreBricks" target="21" />
+      <module name="net.punjarrr.morebricks.MoreBricks.main~1" target="21" />
+      <module name="net.punjarrr.morebricks.MoreBricks.test~1" target="21" />
+    </bytecodeTargetLevel>
   </component>
 </project>
