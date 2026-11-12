@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:smelting",
-  "category": "blocks",
-  "experience": 0.1,
-  "ingredient": "morebricks:granite_bricks",
-  "result": {
-    "id": "morebricks:cracked_granite_bricks"
-  }
-}

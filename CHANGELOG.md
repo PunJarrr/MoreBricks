@@ -5,11 +5,10 @@
 A full rewrite that supports Fabric and NeoForge on Minecraft 1.20.1 through 26.3.
 
 ### Added
-- Granite, diorite and andesite brick walls, cracked bricks and chiseled bricks.
+- Granite, diorite and andesite brick walls.
 - NeoForge support (1.20.4 and newer).
 - Minecraft 1.20.5 – 26.3 support.
 - Stonecutter recipes for every shape, from the raw stone, polished stone or bricks.
-- Cracked bricks are smelted from bricks; chiseled bricks are crafted from two stacked slabs.
 
 ### Changed
 - Bricks are crafted from 4 polished stone (2×2) instead of 9 raw stone, matching vanilla brick sets.

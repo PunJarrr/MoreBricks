@@ -2,16 +2,14 @@
 
 Adds vanilla-style brick sets for **granite**, **diorite** and **andesite**, for Fabric and NeoForge.
 
-Each stone gets six blocks, in the Building Blocks tab right after its polished stone:
+Each stone gets four blocks, in the Building Blocks tab right after its polished stone:
 
 | Block | Recipe |
 |---|---|
 | Bricks | 4 polished stone in a 2×2 → 4 bricks |
-| Cracked Bricks | Smelt bricks |
 | Brick Stairs | 6 bricks → 4 stairs |
 | Brick Slab | 3 bricks → 6 slabs |
 | Brick Wall | 6 bricks → 6 walls |
-| Chiseled Bricks | 2 brick slabs stacked |
 
 Every shape can also be made in a stonecutter from the raw stone, polished stone or bricks.
 
@@ -132,6 +130,12 @@ tokens set; it does a dry run.
 Issues and pull requests are welcome on [GitHub](https://github.com/PunJarrr/MoreBricks). Please run
 `./gradlew runDatagen` and commit the regenerated files if your change touches blocks or recipes.
 
+## Credits
+
+The granite, diorite and andesite brick textures come from the [Vanilla Tweaks](https://vanillatweaks.net/)
+resource pack, used under the [Vanilla Tweaks terms](https://vanillatweaks.net/terms/). See [credits.txt](credits.txt),
+which is also included in every jar. Keep this credit on every page where the mod is published.
+
 ## License
 
-[MIT](LICENSE)
+The code is [MIT](LICENSE) licensed. Textures from Vanilla Tweaks remain under the Vanilla Tweaks terms.

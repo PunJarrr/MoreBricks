@@ -83,6 +83,8 @@ tasks {
         val id = modId
         inputs.property("mod_id", id)
         from(rootProject.file("LICENSE")) { rename { "${it}_$id" } }
+        // Required by the Vanilla Tweaks terms (https://vanillatweaks.net/terms/)
+        from(rootProject.file("credits.txt"))
     }
 
     register<Copy>("buildAndCollect") {

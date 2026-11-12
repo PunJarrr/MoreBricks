@@ -6,7 +6,6 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeProvider;
-import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Block;
 import net.punjarrr.morebricks.block.BrickSet;
@@ -16,8 +15,6 @@ import net.minecraft.advancements.Advancement;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.world.item.crafting.Recipe;
 //?}
-//? if >=26.1
-import net.minecraft.world.item.crafting.CookingBookCategory;
 //? if <1.21.2 {
 /*import net.minecraft.data.recipes.RecipeBuilder;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
@@ -38,8 +35,7 @@ import static net.minecraft.data.recipes.RecipeCategory.DECORATIONS;
 
 /**
  * Vanilla-style recipes, matching how stone and deepslate bricks are made:
- * polished stone -> bricks -> stairs/slab/wall/chiseled, bricks smelt into cracked bricks,
- * and every shape is also available from the stonecutter.
+ * polished stone -> bricks -> stairs/slab/wall, and every shape is also available from the stonecutter.
  */
 final class ModRecipeProvider extends FabricRecipeProvider {
     ModRecipeProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
@@ -119,10 +115,6 @@ final class ModRecipeProvider extends FabricRecipeProvider {
             RecipeProvider.wall(output, category, result, material);
         }
 
-        private void chiseled(RecipeCategory category, ItemLike result, ItemLike material) {
-            RecipeProvider.chiseled(output, category, result, material);
-        }
-
         private void stonecutterResultFromBase(RecipeCategory category, ItemLike result, ItemLike material) {
             RecipeProvider.stonecutterResultFromBase(output, category, result, material);
         }
@@ -145,20 +137,12 @@ final class ModRecipeProvider extends FabricRecipeProvider {
                         .save(output);
                 slab(BUILDING_BLOCKS, set.slab(), set.bricks());
                 wall(DECORATIONS, set.wall(), set.bricks());
-                chiseled(BUILDING_BLOCKS, set.chiseledBricks(), set.slab());
-                //? if >=26.1 {
-                SimpleCookingRecipeBuilder.smelting(Ingredient.of(set.bricks()), BUILDING_BLOCKS, CookingBookCategory.BLOCKS, set.crackedBricks(), 0.1F, 200)
-                //?} else
-                /*SimpleCookingRecipeBuilder.smelting(Ingredient.of(set.bricks()), BUILDING_BLOCKS, set.crackedBricks(), 0.1F, 200)*/
-                        .unlockedBy(getHasName(set.bricks()), has(set.bricks()))
-                        .save(output);
 
                 for (Block base : List.of(set.stone, set.polished, set.bricks())) {
                     if (base != set.bricks()) stonecutterResultFromBase(BUILDING_BLOCKS, set.bricks(), base);
                     stonecutterResultFromBase(BUILDING_BLOCKS, set.stairs(), base);
                     stonecutterResultFromBase(BUILDING_BLOCKS, set.slab(), base, 2);
                     stonecutterResultFromBase(DECORATIONS, set.wall(), base);
-                    stonecutterResultFromBase(BUILDING_BLOCKS, set.chiseledBricks(), base);
                 }
             }
         }

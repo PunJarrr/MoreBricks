@@ -21,8 +21,6 @@ final class ModModelProvider extends FabricModelProvider {
                     .stairs(set.stairs())
                     .slab(set.slab())
                     .wall(set.wall())
-                    .cracked(set.crackedBricks())
-                    .chiseled(set.chiseledBricks())
                     .getFamily();
             generators.family(set.bricks()).generateFor(family);
         }

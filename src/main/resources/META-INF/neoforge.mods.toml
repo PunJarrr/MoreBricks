@@ -8,7 +8,7 @@ modId = "${id}"
 displayName = "${name}"
 version = "${version}"
 authors = "PunJarrr"
-description = "Adds granite, diorite and andesite brick sets: bricks, stairs, slabs, walls, cracked and chiseled bricks."
+description = "Adds granite, diorite and andesite bricks, with stairs, slabs and walls."
 ${icon_key} = "assets/morebricks/icon.png"
 displayURL = "https://modrinth.com/mod/morebricks"
 

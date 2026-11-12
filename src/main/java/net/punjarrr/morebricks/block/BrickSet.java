@@ -10,8 +10,7 @@ import java.util.List;
 import java.util.function.Supplier;
 
 /**
- * A vanilla-style brick family made from one stone type:
- * bricks, cracked bricks, stairs, slab, wall and chiseled bricks.
+ * A vanilla-style brick family made from one stone type: bricks, stairs, slab and wall.
  */
 public final class BrickSet {
     /** Stone name, e.g. "granite". */
@@ -23,7 +22,7 @@ public final class BrickSet {
     /** The last vanilla block of this stone in the Building Blocks tab; bricks are listed after it. */
     public final Block insertAfter;
 
-    private Supplier<Block> bricks, crackedBricks, stairs, slab, wall, chiseledBricks;
+    private Supplier<Block> bricks, stairs, slab, wall;
 
     BrickSet(String name, Block stone, Block polished, Block insertAfter) {
         this.name = name;
@@ -34,12 +33,10 @@ public final class BrickSet {
 
     void register(BlockRegistrar registrar) {
         bricks = registrar.register(name + "_bricks", Block::new, this::properties);
-        crackedBricks = registrar.register("cracked_" + name + "_bricks", Block::new, this::properties);
         stairs = registrar.register(name + "_brick_stairs",
                 properties -> new StairBlock(bricks.get().defaultBlockState(), properties) {}, this::properties);
         slab = registrar.register(name + "_brick_slab", SlabBlock::new, this::properties);
         wall = registrar.register(name + "_brick_wall", WallBlock::new, () -> properties().forceSolidOn());
-        chiseledBricks = registrar.register("chiseled_" + name + "_bricks", Block::new, this::properties);
     }
 
     private BlockBehaviour.Properties properties() {
@@ -50,14 +47,12 @@ public final class BrickSet {
     }
 
     public Block bricks() { return bricks.get(); }
-    public Block crackedBricks() { return crackedBricks.get(); }
     public Block stairs() { return stairs.get(); }
     public Block slab() { return slab.get(); }
     public Block wall() { return wall.get(); }
-    public Block chiseledBricks() { return chiseledBricks.get(); }
 
     /** All blocks of the set, in vanilla's Building Blocks tab order. */
     public List<Block> blocks() {
-        return List.of(bricks(), crackedBricks(), stairs(), slab(), wall(), chiseledBricks());
+        return List.of(bricks(), stairs(), slab(), wall());
     }
 }

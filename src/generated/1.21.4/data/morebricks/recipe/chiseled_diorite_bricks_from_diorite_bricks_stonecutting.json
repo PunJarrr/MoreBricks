@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": "morebricks:diorite_bricks",
-  "result": {
-    "count": 1,
-    "id": "morebricks:chiseled_diorite_bricks"
-  }
-}

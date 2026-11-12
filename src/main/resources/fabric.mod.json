@@ -3,7 +3,7 @@
   "id": "${id}",
   "version": "${version}",
   "name": "${name}",
-  "description": "Adds granite, diorite and andesite brick sets: bricks, stairs, slabs, walls, cracked and chiseled bricks.",
+  "description": "Adds granite, diorite and andesite bricks, with stairs, slabs and walls.",
   "authors": [
     "PunJarrr"
   ],
