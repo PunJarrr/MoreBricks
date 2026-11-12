@@ -29,6 +29,10 @@ repositories {
         forRepository { maven("https://api.modrinth.com/maven") { name = "Modrinth" } }
         filter { includeGroup("maven.modrinth") }
     }
+    exclusiveContent {
+        forRepository { maven("https://maven.wispforest.io/releases") { name = "Wisp Forest" } }
+        filter { includeGroupByRegex("io\\.wispforest(\\..*)?") }
+    }
 }
 
 dependencies {
@@ -44,7 +48,10 @@ dependencies {
     // never part of the published jar. Its newest version targets 1.21.4.
     if (sc.current.version == "1.21.4") {
         modLocalRuntime("maven.modrinth:isometric-renders:0.4.9+1.21.4")
-        modLocalRuntime("maven.modrinth:owo-lib:0.12.20+1.21.4")
+        // From Wisp Forest, so its bundled libraries come along as normal dependencies
+        modLocalRuntime("io.wispforest:owo-lib:0.12.20+1.21.4")
+        // Bundled inside Isometric Renders, but dev runs don't load bundled jars
+        modLocalRuntime("io.wispforest:worldmesher:0.4.7+1.21.4")
     }
 }
 
