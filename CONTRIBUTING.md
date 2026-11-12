@@ -87,7 +87,7 @@ Build every jar into `build/libs/<mod version>/`:
 ## Releasing (maintainers)
 
 Releases are uploaded to [Modrinth](https://modrinth.com/mod/morebricks) and
-[CurseForge](https://www.curseforge.com/minecraft/mc-mods/morebricks-granite-diorite-andesite-bricks)
+[CurseForge](https://www.curseforge.com/projects/922038)
 by the `Publish` GitHub Actions workflow.
 
 1. Bump `mod.version` in `stonecutter.properties.toml` and add the changes to `CHANGELOG.md`.

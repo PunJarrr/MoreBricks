@@ -1,16 +1,16 @@
 <div align="center">
 
-<img src="src/main/resources/assets/morebricks/icon.png" alt="MoreBricks icon" width="128">
+<img src="https://cdn.modrinth.com/data/28Z4jb8Q/ab9da71a03620bb07b8982cabb2d710e6ca1b93e.gif" alt="MoreBricks icon" width="128">
 
 # MoreBricks
 
 **Granite, diorite and andesite bricks, with stairs, slabs and walls.**
 
 [![Available on Modrinth](https://raw.githubusercontent.com/intergrav/devins-badges/0a3449fd26bf1375d2c5c26f096c8f30aa358766/assets/cozy/available/modrinth_vector.svg)](https://modrinth.com/mod/morebricks)
-[![Available on CurseForge](https://raw.githubusercontent.com/intergrav/devins-badges/0a3449fd26bf1375d2c5c26f096c8f30aa358766/assets/cozy/available/curseforge_vector.svg)](https://www.curseforge.com/minecraft/mc-mods/morebricks-granite-diorite-andesite-bricks)
+[![Available on CurseForge](https://raw.githubusercontent.com/intergrav/devins-badges/0a3449fd26bf1375d2c5c26f096c8f30aa358766/assets/cozy/available/curseforge_vector.svg)](https://www.curseforge.com/projects/922038)
 
-[![Supports Fabric](https://raw.githubusercontent.com/intergrav/devins-badges/0a3449fd26bf1375d2c5c26f096c8f30aa358766/assets/cozy/supported/fabric_vector.svg)](https://fabricmc.net/)
-[![Supports NeoForge](https://raw.githubusercontent.com/intergrav/devins-badges/0a3449fd26bf1375d2c5c26f096c8f30aa358766/assets/cozy/supported/neoforge_vector.svg)](https://neoforged.net/)
+![Supports Fabric](https://raw.githubusercontent.com/intergrav/devins-badges/0a3449fd26bf1375d2c5c26f096c8f30aa358766/assets/cozy/supported/fabric_vector.svg)
+![Supports NeoForge](https://raw.githubusercontent.com/intergrav/devins-badges/0a3449fd26bf1375d2c5c26f096c8f30aa358766/assets/cozy/supported/neoforge_vector.svg)
 [![Requires Fabric API](https://raw.githubusercontent.com/intergrav/devins-badges/0a3449fd26bf1375d2c5c26f096c8f30aa358766/assets/cozy/requires/fabric-api_vector.svg)](https://modrinth.com/mod/fabric-api)
 
 <img src="https://cdn.modrinth.com/data/28Z4jb8Q/images/77bd8ebdf775840c0f2e981da603b620820d0389.png" alt="All 12 MoreBricks blocks on plains grass">
@@ -44,7 +44,7 @@ In a stonecutter, any of these can be made from the raw stone, the polished ston
 ## Download
 
 Get it from [Modrinth](https://modrinth.com/mod/morebricks),
-[CurseForge](https://www.curseforge.com/minecraft/mc-mods/morebricks-granite-diorite-andesite-bricks) or
+[CurseForge](https://www.curseforge.com/projects/922038) or
 [GitHub releases](https://github.com/PunJarrr/MoreBricks/releases). Pick the file for your Minecraft
 version and mod loader.
 
