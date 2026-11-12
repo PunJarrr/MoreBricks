@@ -1,8 +1,36 @@
+<div align="center">
+
+<img src="src/main/resources/assets/morebricks/icon.png" alt="MoreBricks icon" width="128">
+
 # MoreBricks
 
-Adds vanilla-style brick sets for **granite**, **diorite** and **andesite**, for Fabric and NeoForge.
+**Granite, diorite and andesite bricks, with stairs, slabs and walls.**
 
-Each stone gets four blocks, in the Building Blocks tab right after its polished stone:
+[![Available on Modrinth](https://raw.githubusercontent.com/intergrav/devins-badges/0a3449fd26bf1375d2c5c26f096c8f30aa358766/assets/cozy/available/modrinth_vector.svg)](https://modrinth.com/mod/morebricks)
+[![Available on CurseForge](https://raw.githubusercontent.com/intergrav/devins-badges/0a3449fd26bf1375d2c5c26f096c8f30aa358766/assets/cozy/available/curseforge_vector.svg)](https://www.curseforge.com/minecraft/mc-mods/morebricks-granite-diorite-andesite-bricks)
+
+[![Supports Fabric](https://raw.githubusercontent.com/intergrav/devins-badges/0a3449fd26bf1375d2c5c26f096c8f30aa358766/assets/cozy/supported/fabric_vector.svg)](https://fabricmc.net/)
+[![Supports NeoForge](https://raw.githubusercontent.com/intergrav/devins-badges/0a3449fd26bf1375d2c5c26f096c8f30aa358766/assets/cozy/supported/neoforge_vector.svg)](https://neoforged.net/)
+[![Requires Fabric API](https://raw.githubusercontent.com/intergrav/devins-badges/0a3449fd26bf1375d2c5c26f096c8f30aa358766/assets/cozy/requires/fabric-api_vector.svg)](https://modrinth.com/mod/fabric-api)
+
+<img src="https://cdn.modrinth.com/data/28Z4jb8Q/images/77bd8ebdf775840c0f2e981da603b620820d0389.png" alt="All 12 MoreBricks blocks on plains grass">
+
+</div>
+
+## About
+
+Minecraft has polished granite, diorite and andesite, but no bricks to build with. MoreBricks adds
+them as full vanilla-style block sets that look and work like stone bricks.
+
+- **12 new blocks**: bricks, stairs, slabs and walls for each stone.
+- **Vanilla recipes**: crafted like other brick sets, and every shape can be cut in a stonecutter.
+- **Fits right in**: listed in the Building Blocks tab next to each polished stone, and part of the
+  vanilla `stairs`, `slabs` and `walls` tags, so walls connect and other mods see them correctly.
+- **Lightweight**: just blocks, no config and no extra dependencies besides Fabric API on Fabric.
+
+## Blocks
+
+Each of granite, diorite and andesite gets four blocks:
 
 | Block | Recipe |
 |---|---|
@@ -11,9 +39,14 @@ Each stone gets four blocks, in the Building Blocks tab right after its polished
 | Brick Slab | 3 bricks → 6 slabs |
 | Brick Wall | 6 bricks → 6 walls |
 
-Every shape can also be made in a stonecutter from the raw stone, polished stone or bricks.
+In a stonecutter, any of these can be made from the raw stone, the polished stone or the bricks.
 
-## Supported versions
+## Download
+
+Get it from [Modrinth](https://modrinth.com/mod/morebricks),
+[CurseForge](https://www.curseforge.com/minecraft/mc-mods/morebricks-granite-diorite-andesite-bricks) or
+[GitHub releases](https://github.com/PunJarrr/MoreBricks/releases). Pick the file for your Minecraft
+version and mod loader.
 
 | Minecraft | Fabric | NeoForge |
 |---|:-:|:-:|
@@ -30,112 +63,35 @@ Every shape can also be made in a stonecutter from the raw stone, polished stone
 | 1.20.3 – 1.20.4 | ✓ | ✓ (1.20.4) |
 | 1.20 – 1.20.1 | ✓ | — |
 
-The Fabric version requires [Fabric API](https://modrinth.com/mod/fabric-api).
+On Fabric, [Fabric API](https://modrinth.com/mod/fabric-api) is also needed.
 
-## Development
+## FAQ
 
-The project uses [Stonecutter](https://stonecutter.kikugie.dev/) to build every Minecraft version and
-mod loader from one codebase. Read the
-[Stonecutter beginner's guide](https://stonecutter.kikugie.dev/wiki/start/) before changing code.
+**Does it need to be on the server and the client?**
+Yes. Install it on both, like any mod that adds blocks.
 
-- `src/main/` holds the shared source. Version- and loader-specific lines are marked with Stonecutter
-  comments such as `//? if >=1.21.2 {` or `//? if neoforge {`. Code is written with Mojang's official names.
-- `stonecutter.properties.toml` lists the mod version and the dependency versions for each target.
-- `settings.gradle.kts` lists the targets. Each one builds in `versions/<minecraft>-<loader>/`.
-- `src/generated/<minecraft>/` holds block states, models, recipes, loot tables and tags made by data
-  generation. Don't edit these files by hand.
+**Can I use it in my modpack?**
+Yes, go ahead. No need to ask.
 
-Java 25, 21 and 17 are needed for 26.x, 1.20.5–1.21.x and 1.20.1–1.20.4 respectively. Gradle downloads
-any that are missing.
+**Can I remove it from an existing world?**
+The bricks will disappear from the world, so back up first.
 
-### Common tasks
-
-Switch the version your IDE edits (this rewrites the Stonecutter comments in `src/`):
-
-```bash
-./gradlew "Set active project to 1.21.1-fabric"
-```
-
-Switch back to the committed version before committing:
-
-```bash
-./gradlew "Reset active project"
-```
-
-Regenerate data after changing blocks or recipes (one Fabric target, or all of them):
-
-```bash
-./gradlew :26.3-fabric:runDatagen
-```
-
-```bash
-./gradlew runDatagen
-```
-
-Run the game for one target:
-
-```bash
-./gradlew :26.3-fabric:runClient
-```
-
-```bash
-./gradlew :26.3-neoforge:runClient
-```
-
-Check that the mod loads: boots a dev server, places each kind of block, and reports errors
-(running it accepts the [Minecraft EULA](https://aka.ms/MinecraftEULA) for the dev servers):
-
-```bash
-scripts/smoke-test.sh 26.3-fabric 26.3-neoforge
-```
-
-```bash
-scripts/smoke-test.sh all
-```
-
-Build every jar into `build/libs/<mod version>/`:
-
-```bash
-./gradlew buildAndCollect
-```
-
-### Adding a block
-
-1. Register it in `BrickSet` (or `ModBlocks`) so both loaders pick it up.
-2. Add its model, recipe, loot table and tags in `fabric/datagen/`.
-3. Add its name to `assets/morebricks/lang/en_us.json` and its texture to `assets/morebricks/textures/block/`.
-4. Run `./gradlew runDatagen` and commit the regenerated `src/generated/` files.
-
-## Releasing
-
-Releases are uploaded to [Modrinth](https://modrinth.com/mod/morebricks) and
-[CurseForge](https://www.curseforge.com/projects/922038) by the `Publish` GitHub Actions workflow.
-
-1. Bump `mod.version` in `stonecutter.properties.toml` and add the changes to `CHANGELOG.md`.
-2. Commit and push.
-3. Create a GitHub release tagged `v<mod version>` (for example `v2.0.0`), with the changes as its description.
-
-The workflow builds every version, uploads each jar with its Minecraft versions and loader, and attaches
-the jars to the GitHub release. It needs two repository secrets (Settings → Secrets and variables → Actions):
-
-- `MODRINTH_TOKEN`: a [Modrinth personal access token](https://modrinth.com/settings/pats) with the
-  *Create versions* scope.
-- `CURSEFORGE_TOKEN`: a [CurseForge API token](https://legacy.curseforge.com/account/api-tokens).
-
-To check the upload settings locally without uploading anything, run `./gradlew publishMods` with no
-tokens set; it does a dry run.
+**Will there be more blocks?**
+Mossy, cracked and chiseled versions are planned. Ideas are welcome in the
+[issue tracker](https://github.com/PunJarrr/MoreBricks/issues).
 
 ## Contributing
 
-Issues and pull requests are welcome on [GitHub](https://github.com/PunJarrr/MoreBricks). Please run
-`./gradlew runDatagen` and commit the regenerated files if your change touches blocks or recipes.
+Bug reports, ideas and pull requests are welcome on the
+[issue tracker](https://github.com/PunJarrr/MoreBricks/issues). To build the mod or change its code,
+see [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Credits
 
 The granite, diorite and andesite brick textures come from the [Vanilla Tweaks](https://vanillatweaks.net/)
-resource pack, used under the [Vanilla Tweaks terms](https://vanillatweaks.net/terms/). See [credits.txt](credits.txt),
-which is also included in every jar. Keep this credit on every page where the mod is published.
+resource pack, used under the [Vanilla Tweaks terms](https://vanillatweaks.net/terms/).
+See [credits.txt](credits.txt), which is also included in every jar.
 
 ## License
 
-The code is [MIT](LICENSE) licensed. Textures from Vanilla Tweaks remain under the Vanilla Tweaks terms.
+The code is licensed under [MIT](LICENSE). The Vanilla Tweaks textures stay under the Vanilla Tweaks terms.
