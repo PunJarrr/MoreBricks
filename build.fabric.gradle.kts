@@ -24,6 +24,13 @@ sourceSets.main {
     resources.srcDir(generatedResources)
 }
 
+repositories {
+    exclusiveContent {
+        forRepository { maven("https://api.modrinth.com/maven") { name = "Modrinth" } }
+        filter { includeGroup("maven.modrinth") }
+    }
+}
+
 dependencies {
     minecraft("com.mojang:minecraft:${sc.current.version}")
     // Mojang's official names on obfuscated versions, so code matches 26.1+
@@ -32,6 +39,13 @@ dependencies {
     // `mod*` configurations are converted by loom-back-compat on 26.1+
     modImplementation("net.fabricmc:fabric-loader:${sc.properties["deps.fabric_loader"]}")
     modImplementation("net.fabricmc.fabric-api:fabric-api:${sc.properties["deps.fabric_api"]}")
+
+    // Dev-only: Isometric Renders for showcase images (`/isorender`). Only loaded by runClient,
+    // never part of the published jar. Its newest version targets 1.21.4.
+    if (sc.current.version == "1.21.4") {
+        modLocalRuntime("maven.modrinth:isometric-renders:0.4.9+1.21.4")
+        modLocalRuntime("maven.modrinth:owo-lib:0.12.20+1.21.4")
+    }
 }
 
 fabricApi {
