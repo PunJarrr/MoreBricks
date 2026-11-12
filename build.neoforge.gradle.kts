@@ -125,3 +125,17 @@ publishMods {
         serverRequired = true
     }
 }
+
+// Upload order: older Minecraft versions first, so the newest is at the top of the NeoForge files.
+// (All Fabric uploads run after these; see build.fabric.gradle.kts.)
+/** "1.21.4-neoforge" -> "0001.0021.0004", so versions compare correctly as text */
+fun versionSortKey(projectName: String) =
+    projectName.substringBefore('-').split('.').joinToString(".") { it.padStart(4, '0') }
+
+val uploadsBeforeThis = rootProject.subprojects.filter {
+    it.name.endsWith("-neoforge") && versionSortKey(it.name) < versionSortKey(project.name)
+}.map { it.path }
+tasks.matching { it.name == "publishModrinth" || it.name == "publishCurseforge" }.configureEach {
+    val uploadTask = name
+    mustRunAfter(uploadsBeforeThis.map { "$it:$uploadTask" })
+}

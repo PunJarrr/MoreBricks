@@ -147,3 +147,19 @@ publishMods {
         requires("fabric-api")
     }
 }
+
+// Upload order: Modrinth and CurseForge list the newest upload first. Upload every NeoForge file
+// before any Fabric file, and older Minecraft versions before newer ones, so the top of each list
+// is the newest Fabric version (Fabric is used by more players).
+/** "1.21.4-fabric" -> "0001.0021.0004", so versions compare correctly as text */
+fun versionSortKey(projectName: String) =
+    projectName.substringBefore('-').split('.').joinToString(".") { it.padStart(4, '0') }
+
+val uploadsBeforeThis = rootProject.subprojects.filter {
+    it.name.endsWith("-neoforge") ||
+        (it.name.endsWith("-fabric") && versionSortKey(it.name) < versionSortKey(project.name))
+}.map { it.path }
+tasks.matching { it.name == "publishModrinth" || it.name == "publishCurseforge" }.configureEach {
+    val uploadTask = name
+    mustRunAfter(uploadsBeforeThis.map { "$it:$uploadTask" })
+}
