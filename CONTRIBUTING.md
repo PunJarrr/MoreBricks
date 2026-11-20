@@ -11,13 +11,14 @@ mod loader from one codebase. Read the
 [Stonecutter beginner's guide](https://stonecutter.kikugie.dev/wiki/start/) before changing code.
 
 - `src/main/` holds the shared source. Version- and loader-specific lines are marked with Stonecutter
-  comments such as `//? if >=1.21.2 {` or `//? if neoforge {`. Code is written with Mojang's official names.
+  comments such as `//? if >=1.21.2 {`, `//? if neoforge {` or `//? if forge {`. Code is written with Mojang's official names.
 - `stonecutter.properties.toml` lists the mod version and the dependency versions for each target.
 - `settings.gradle.kts` lists the targets. Each one builds in `versions/<minecraft>-<loader>/`.
 - `src/generated/<minecraft>/` holds block states, models, recipes, loot tables and tags made by data
   generation. Don't edit these files by hand.
 
-Java 25, 21 and 17 are needed for 26.x, 1.20.5–1.21.x and 1.20.1–1.20.4 respectively. Gradle downloads
+Java 25, 21 and 17 are needed for 26.x, 1.20.5–1.21.x and 1.20.1–1.20.4 respectively.
+Forge (1.20.1 only) is built with ModDevGradle's legacy Forge mode and uses Java 17. Gradle downloads
 any that are missing.
 
 ## Common tasks
@@ -82,7 +83,7 @@ Build every jar into `build/libs/<mod version>/`:
 
 - Run `./gradlew runDatagen` and commit the regenerated files if your change touches blocks or recipes.
 - Run `./gradlew "Reset active project"` before committing.
-- Check at least one Fabric and one NeoForge version with `scripts/smoke-test.sh`.
+- Check at least one Fabric and one NeoForge version with `scripts/smoke-test.sh` (and `1.20.1-forge` if you changed Forge code).
 
 ## Releasing (maintainers)
 
@@ -95,8 +96,9 @@ by the `Publish` GitHub Actions workflow.
 3. Create a GitHub release tagged `v<mod version>` (for example `v2.0.0`), with the changes as its description.
 
 The workflow builds every version, uploads each jar with its Minecraft versions and loader, and attaches
-the jars to the GitHub release. NeoForge files are uploaded first and Fabric files last, each from the
+the jars to the GitHub release. NeoForge files are uploaded first, then Forge, then Fabric, each from the
 oldest Minecraft version to the newest, so the newest Fabric file is at the top of each site's list.
+The Fabric files are also marked as working on Quilt.
 
 It needs two repository secrets (Settings → Secrets and variables → Actions):
 

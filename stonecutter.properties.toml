@@ -1,14 +1,14 @@
 # Mod metadata and per-version dependencies.
 # See https://stonecutter.kikugie.dev/wiki/config/properties#centralized-properties
 #
-# Sections: ["<mc>"] applies to both loaders, [fabric."<mc>"] / [neoforge."<mc>"] to one loader.
+# Sections: ["<mc>"] applies to every loader, [fabric."<mc>"] / [neoforge."<mc>"] / [forge."<mc>"] to one loader.
 #   mod.mc_releases  Minecraft releases this jar is published for (Modrinth/CurseForge)
-#   mod.mc_compat    Minecraft version range written into fabric.mod.json / neoforge.mods.toml
+#   mod.mc_compat    Minecraft version range written into fabric.mod.json / neoforge.mods.toml / forge.mods.toml
 
 mod.id = "morebricks"
 mod.name = "MoreBricks"
 mod.group = "net.punjarrr.morebricks"
-mod.version = "2.0.0"
+mod.version = "2.1.0"
 
 # Release pages. Uploads need MODRINTH_TOKEN / CURSEFORGE_TOKEN (GitHub Actions secrets).
 publish.modrinth = "28Z4jb8Q"
@@ -19,12 +19,17 @@ loomx.loom_version = "1.19-SNAPSHOT"
 
 # ---------------------------------------------------------------- 1.20.x
 
-["1.20.1"]
-mod.mc_releases = ["1.20", "1.20.1"]
-
+# Fabric covers 1.20 and 1.20.1, while Forge builds are tied to one Minecraft release,
+# so each loader lists its own releases here.
 [fabric."1.20.1"]
+mod.mc_releases = ["1.20", "1.20.1"]
 mod.mc_compat = ">=1.20 <=1.20.1"
 deps.fabric_api = "0.92.12+1.20.1"
+
+[forge."1.20.1"]
+mod.mc_releases = ["1.20.1"]
+mod.mc_compat = "[1.20.1]"
+deps.forge = "47.4.29"
 
 ["1.20.4"]
 mod.mc_releases = ["1.20.3", "1.20.4"]

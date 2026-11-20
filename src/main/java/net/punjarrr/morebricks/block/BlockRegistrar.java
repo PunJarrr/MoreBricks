@@ -8,7 +8,7 @@ import java.util.function.Supplier;
 
 /**
  * Registers a block and its block item. Each mod loader provides its own implementation,
- * since Fabric registers immediately and NeoForge registers through deferred registers.
+ * since Fabric registers immediately and NeoForge and Forge register through deferred registers.
  */
 @FunctionalInterface
 public interface BlockRegistrar {

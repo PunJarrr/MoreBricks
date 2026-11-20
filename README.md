@@ -11,6 +11,8 @@
 
 ![Supports Fabric](https://raw.githubusercontent.com/intergrav/devins-badges/0a3449fd26bf1375d2c5c26f096c8f30aa358766/assets/cozy/supported/fabric_vector.svg)
 ![Supports NeoForge](https://raw.githubusercontent.com/intergrav/devins-badges/0a3449fd26bf1375d2c5c26f096c8f30aa358766/assets/cozy/supported/neoforge_vector.svg)
+![Supports Forge](https://raw.githubusercontent.com/intergrav/devins-badges/0a3449fd26bf1375d2c5c26f096c8f30aa358766/assets/cozy/supported/forge_vector.svg)
+![Supports Quilt](https://raw.githubusercontent.com/intergrav/devins-badges/0a3449fd26bf1375d2c5c26f096c8f30aa358766/assets/cozy/supported/quilt_vector.svg)
 [![Requires Fabric API](https://raw.githubusercontent.com/intergrav/devins-badges/0a3449fd26bf1375d2c5c26f096c8f30aa358766/assets/cozy/requires/fabric-api_vector.svg)](https://modrinth.com/mod/fabric-api)
 
 <img src="https://cdn.modrinth.com/data/28Z4jb8Q/images/77bd8ebdf775840c0f2e981da603b620820d0389.png" alt="All 12 MoreBricks blocks on plains grass">
@@ -26,7 +28,7 @@ them as full vanilla-style block sets that look and work like stone bricks.
 - **Vanilla recipes**: crafted like other brick sets, and every shape can be cut in a stonecutter.
 - **Fits right in**: listed in the Building Blocks tab next to each polished stone, and part of the
   vanilla `stairs`, `slabs` and `walls` tags, so walls connect and other mods see them correctly.
-- **Lightweight**: just blocks, no config and no extra dependencies besides Fabric API on Fabric.
+- **Lightweight**: just blocks, no config and no extra dependencies besides Fabric API on Fabric and Quilt.
 
 ## Blocks
 
@@ -48,22 +50,23 @@ Get it from [Modrinth](https://modrinth.com/mod/morebricks),
 [GitHub releases](https://github.com/PunJarrr/MoreBricks/releases). Pick the file for your Minecraft
 version and mod loader.
 
-| Minecraft | Fabric | NeoForge |
-|---|:-:|:-:|
-| 26.3 | ✓ | ✓ |
-| 26.2 | ✓ | ✓ |
-| 26.1 – 26.1.2 | ✓ | ✓ (26.1.2) |
-| 1.21.11 | ✓ | ✓ |
-| 1.21.9 – 1.21.10 | ✓ | ✓ (1.21.10) |
-| 1.21.6 – 1.21.8 | ✓ | ✓ (1.21.8) |
-| 1.21.5 | ✓ | ✓ |
-| 1.21.4 | ✓ | ✓ |
-| 1.21 – 1.21.1 | ✓ | ✓ |
-| 1.20.5 – 1.20.6 | ✓ | ✓ (1.20.6) |
-| 1.20.3 – 1.20.4 | ✓ | ✓ (1.20.4) |
-| 1.20 – 1.20.1 | ✓ | — |
+| Minecraft | Fabric / Quilt | NeoForge | Forge |
+|---|:-:|:-:|:-:|
+| 26.3 | ✓ | ✓ | — |
+| 26.2 | ✓ | ✓ | — |
+| 26.1 – 26.1.2 | ✓ | ✓ (26.1.2) | — |
+| 1.21.11 | ✓ | ✓ | — |
+| 1.21.9 – 1.21.10 | ✓ | ✓ (1.21.10) | — |
+| 1.21.6 – 1.21.8 | ✓ | ✓ (1.21.8) | — |
+| 1.21.5 | ✓ | ✓ | — |
+| 1.21.4 | ✓ | ✓ | — |
+| 1.21 – 1.21.1 | ✓ | ✓ | — |
+| 1.20.5 – 1.20.6 | ✓ | ✓ (1.20.6) | — |
+| 1.20.3 – 1.20.4 | ✓ | ✓ (1.20.4) | — |
+| 1.20 – 1.20.1 | ✓ | — | ✓ (1.20.1) |
 
-On Fabric, [Fabric API](https://modrinth.com/mod/fabric-api) is also needed.
+On Fabric and Quilt, [Fabric API](https://modrinth.com/mod/fabric-api) is also needed. Quilt uses the Fabric files.
+Forge is only supported on 1.20.1; for newer versions, use NeoForge.
 
 ## FAQ
 

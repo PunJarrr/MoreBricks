@@ -72,7 +72,7 @@ tasks {
             if (legacyModsToml) path = "META-INF/mods.toml"
         }
 
-        exclude("fabric.mod.json", ".cache")
+        exclude("fabric.mod.json", "META-INF/forge.mods.toml", ".cache")
     }
 
     named("createMinecraftArtifacts") {
@@ -127,7 +127,7 @@ publishMods {
 }
 
 // Upload order: older Minecraft versions first, so the newest is at the top of the NeoForge files.
-// (All Fabric uploads run after these; see build.fabric.gradle.kts.)
+// (Forge and then all Fabric uploads run after these; see build.forge.gradle.kts and build.fabric.gradle.kts.)
 /** "1.21.4-neoforge" -> "0001.0021.0004", so versions compare correctly as text */
 fun versionSortKey(projectName: String) =
     projectName.substringBefore('-').split('.').joinToString(".") { it.padStart(4, '0') }

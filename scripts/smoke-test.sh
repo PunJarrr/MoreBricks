@@ -21,7 +21,7 @@ fi
 FAILED=0
 for P in "${TARGETS[@]}"; do
   V=${P%-*}; L=${P##*-}
-  if [ "$L" = fabric ]; then DIR=$ROOT/run/$V; else DIR=$ROOT/run/$V-neoforge; fi
+  if [ "$L" = fabric ]; then DIR=$ROOT/run/$V; else DIR=$ROOT/run/$V-$L; fi
   mkdir -p "$DIR"
   # Start from a fresh world, so blocks left by earlier runs can't affect the result
   rm -rf "$DIR/world"

@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.1.0
+
+### Added
+- Forge support for Minecraft 1.20.1.
+- Quilt support: the Fabric files now also load on Quilt.
+
 ## 2.0.0
 
 A full rewrite that supports Fabric and NeoForge on Minecraft 1.20.1 through 26.3.

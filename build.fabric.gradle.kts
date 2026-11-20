@@ -91,12 +91,14 @@ tasks {
             "name" to sc.properties["mod.name"],
             "version" to modVersion,
             "minecraft" to sc.properties["mod.mc_compat"],
-            "loader" to Regex("\\d+\\.\\d+").find(sc.properties["deps.fabric_loader"])!!.value,
+            // The oldest Fabric Loader the mod accepts. Kept low because Quilt reports itself as an older
+            // Fabric Loader (0.19.x); Fabric API already asks for whatever newer loader it needs.
+            "loader" to "0.15",
         )
         inputs.properties(props)
         filesMatching("fabric.mod.json") { expand(props) }
 
-        exclude("META-INF/neoforge.mods.toml", ".cache")
+        exclude("META-INF/neoforge.mods.toml", "META-INF/forge.mods.toml", ".cache")
     }
 
     withType<Jar> {
@@ -128,6 +130,8 @@ publishMods {
     changelog = providers.environmentVariable("CHANGELOG").orElse("See https://github.com/PunJarrr/MoreBricks/releases")
     type = STABLE
     modLoaders.add("fabric")
+    // Quilt loads Fabric mods; tested on Quilt Loader 0.30.2 for every target
+    modLoaders.add("quilt")
     // Without tokens, `publishMods` only checks the configuration
     dryRun = modrinthToken.map { false }.orElse(true)
 
@@ -148,15 +152,15 @@ publishMods {
     }
 }
 
-// Upload order: Modrinth and CurseForge list the newest upload first. Upload every NeoForge file
-// before any Fabric file, and older Minecraft versions before newer ones, so the top of each list
+// Upload order: Modrinth and CurseForge list the newest upload first. Upload every NeoForge and Forge
+// file before any Fabric file, and older Minecraft versions before newer ones, so the top of each list
 // is the newest Fabric version (Fabric is used by more players).
 /** "1.21.4-fabric" -> "0001.0021.0004", so versions compare correctly as text */
 fun versionSortKey(projectName: String) =
     projectName.substringBefore('-').split('.').joinToString(".") { it.padStart(4, '0') }
 
 val uploadsBeforeThis = rootProject.subprojects.filter {
-    it.name.endsWith("-neoforge") ||
+    !it.name.endsWith("-fabric") ||
         (it.name.endsWith("-fabric") && versionSortKey(it.name) < versionSortKey(project.name))
 }.map { it.path }
 tasks.matching { it.name == "publishModrinth" || it.name == "publishCurseforge" }.configureEach {

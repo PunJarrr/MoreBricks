@@ -9,9 +9,9 @@ stonecutter parameters {
         tags(version, loader)
     }
 
-    // Enables `//? if fabric {` and `//? if neoforge {` in source files
+    // Enables `//? if fabric {`, `//? if neoforge {` and `//? if forge {` in source files
     constants {
-        match(loader, "fabric", "neoforge")
+        match(loader, "fabric", "neoforge", "forge")
     }
 
     replacements {
